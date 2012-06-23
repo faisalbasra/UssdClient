@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Velcom USSD</string>
+    <string name="balance">Баланс</string>
+    <string name="traffic">Остаток траффика</string>
+    <string name="first">Первый</string>
+    <string name="last">Последний</string>
+    
+    
+	<string-array name="tab_names">
+        <item>Избранное</item>
+        <item>Жду звонка</item>
+        <item>Другие запросы</item>
+    </string-array>
+    
+	<string name="short_alphabetical_order">0123456789AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzАаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЫыЬьЭэЮюЯя</string>
+</resources>
