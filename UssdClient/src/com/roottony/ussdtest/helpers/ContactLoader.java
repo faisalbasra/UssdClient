@@ -1,15 +1,20 @@
 package com.roottony.ussdtest.helpers;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
-import com.roottony.ussdtest.ContactItem;
-
+import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.provider.ContactsContract;
+import android.provider.ContactsContract.Contacts;
+
+import com.roottony.ussdtest.ContactItem;
 
 public class ContactLoader {
 
@@ -43,7 +48,18 @@ public class ContactLoader {
 				}
 				phones.close();
 
-				allContacts.add(new ContactItem(contactID, contactName, phoneNumbers));
+				InputStream inputStream = Contacts.openContactPhotoInputStream(
+			            context.getContentResolver(),
+			            ContentUris.withAppendedId(Contacts.CONTENT_URI, Long.parseLong(contactID)));
+			    
+				BitmapDrawable picture = null;
+				if(inputStream != null) {
+			    	Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+			    	picture = new BitmapDrawable(context.getResources(), bitmap);
+			    }
+				
+				allContacts.add(
+					new ContactItem(contactID, contactName, picture, phoneNumbers));
 			}
 		}
 
