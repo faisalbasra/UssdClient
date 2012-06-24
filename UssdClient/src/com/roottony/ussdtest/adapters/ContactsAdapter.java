@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.roottony.ussdtest.ContactItem;
@@ -22,6 +23,7 @@ public class ContactsAdapter extends BaseAdapter {
 	static class ViewHolder {
 		TextView contactName;
 		TextView contactPhone;
+		ImageView contactPicture;
 	}
 	
 	public ContactsAdapter(Activity context, List<ContactItem> contacts) {
@@ -63,6 +65,12 @@ public class ContactsAdapter extends BaseAdapter {
 		ContactItem contact = contactList.get(position);
 		holder.contactName.setText(contact.getName());
 		holder.contactPhone.setText(getPhones(contact));
+		if (contact.getPicture() != null) {
+			holder.contactPicture.setImageDrawable(contact.getPicture());
+		} else {
+			holder.contactPicture.setImageDrawable(
+					context.getResources().getDrawable(android.R.drawable.gallery_thumb));
+		}
 		
 		return holder;
 	}
@@ -82,6 +90,7 @@ public class ContactsAdapter extends BaseAdapter {
 		ViewHolder viewHolder = new ViewHolder();
 		viewHolder.contactName = (TextView) rowView.findViewById(R.id.name_entry);
 		viewHolder.contactPhone = (TextView) rowView.findViewById(R.id.number_entry);
+		viewHolder.contactPicture = (ImageView) rowView.findViewById(R.id.contact_picture);
 		return viewHolder;
 	}
 

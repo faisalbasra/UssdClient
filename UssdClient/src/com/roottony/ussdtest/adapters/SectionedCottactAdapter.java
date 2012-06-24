@@ -10,6 +10,7 @@ import java.util.Set;
 
 import android.app.Activity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
 
@@ -93,6 +94,7 @@ public class SectionedCottactAdapter extends ContactsAdapter implements SectionI
 		IDNameSectionedViewHolder viewHolder = new IDNameSectionedViewHolder();
 		viewHolder.contactName = (TextView) rowView.findViewById(R.id.name_entry);
 		viewHolder.contactPhone = (TextView) rowView.findViewById(R.id.number_entry);
+		viewHolder.contactPicture = (ImageView) rowView.findViewById(R.id.contact_picture);
 		if (hasSectionHeaders) {
 			viewHolder.separator = (TextView) rowView.findViewById(R.id.header);
 		}

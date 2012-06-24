@@ -29,7 +29,8 @@ public class CarrierFilter {
 			
 			if (!carrierPhonesOfContact.isEmpty()) {
 				carrierContacts.add(new ContactItem(item.getID(), 
-													item.getName(), 
+													item.getName(),
+													item.getPicture(),
 													carrierPhonesOfContact));
 			}
 		}
