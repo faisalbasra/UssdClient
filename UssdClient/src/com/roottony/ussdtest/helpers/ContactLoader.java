@@ -52,18 +52,9 @@ public class ContactLoader {
 	}
 
 	private void sortAlphabetically(Context context, List<ContactItem> contacts) {
-		Collections.sort(contacts, new EnRuStringComparator());
+		Collections.sort(contacts, new RuEnContactComparator());
 	}
 
-	private class EnRuStringComparator implements Comparator<ContactItem> {
 
-		@Override
-		public int compare(ContactItem lhs, ContactItem rhs) {
-			String leftName = lhs.getName();
-			String rightName = rhs.getName();
-			
-			return leftName.compareTo(rightName);
-		}
-	}
 
 }

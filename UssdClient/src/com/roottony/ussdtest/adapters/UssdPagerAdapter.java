@@ -1,4 +1,6 @@
-package com.roottony.ussdtest;
+package com.roottony.ussdtest.adapters;
+
+import com.roottony.ussdtest.ContactListFragment;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

@@ -3,9 +3,6 @@ package com.roottony.ussdtest;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.roottony.ussdtest.helpers.Carrier;
-import com.roottony.ussdtest.helpers.ContactLoader;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +13,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+
+import com.roottony.ussdtest.adapters.ContactsAdapter;
+import com.roottony.ussdtest.adapters.SectionedCottactAdapter;
+import com.roottony.ussdtest.helpers.Carrier;
+import com.roottony.ussdtest.helpers.ContactLoader;
 
 public class ContactListFragment extends Fragment{
 	
@@ -34,7 +36,7 @@ public class ContactListFragment extends Fragment{
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		contactsAdapter = new ContactsAdapter(getActivity(), 
+		contactsAdapter = new SectionedCottactAdapter(getActivity(), 
 				new ContactLoader().getContacts(getActivity(), Carrier.VELCOM));
 	}
 	

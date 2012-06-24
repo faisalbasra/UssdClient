@@ -6,6 +6,7 @@ import android.support.v4.view.ViewPager;
 
 import com.astuetz.viewpager.extensions.ScrollingTabsView;
 import com.astuetz.viewpager.extensions.TabsAdapter;
+import com.roottony.ussdtest.adapters.UssdPagerAdapter;
 import com.roottony.ussdtest.ui.ScrollingTabsAdapter;
 
 public class MainActivity extends FragmentActivity{

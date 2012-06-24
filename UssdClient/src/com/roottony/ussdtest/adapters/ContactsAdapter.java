@@ -1,4 +1,4 @@
-package com.roottony.ussdtest;
+package com.roottony.ussdtest.adapters;
 
 import java.util.List;
 
@@ -9,13 +9,17 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.roottony.ussdtest.ContactItem;
+import com.roottony.ussdtest.R;
+import com.roottony.ussdtest.helpers.Carrier;
+
 public class ContactsAdapter extends BaseAdapter {
 	
-	private List<ContactItem> contactList;
+	List<ContactItem> contactList;
 	
 	private Activity context;
 	
-	private static class ViewHolder {
+	static class ViewHolder {
 		TextView contactName;
 		TextView contactPhone;
 	}
@@ -43,23 +47,46 @@ public class ContactsAdapter extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View rowView = convertView;
+		
 		if (rowView == null) {
-			LayoutInflater inflater = context.getLayoutInflater();
-			rowView = inflater.inflate(R.layout.list_entry, null);
-			ViewHolder viewHolder = new ViewHolder();
-			viewHolder.contactName = (TextView) rowView.findViewById(R.id.name_entry);
-			viewHolder.contactPhone = (TextView) rowView.findViewById(R.id.number_entry);
-			rowView.setTag(viewHolder);
+			rowView = createNewView();
 		}
+		
+		fillViewWithData(rowView, position);
+		
+		return rowView;
+	}
 
+	ViewHolder fillViewWithData(View rowView, int position) {
 		ViewHolder holder = (ViewHolder) rowView.getTag();
+		
 		ContactItem contact = contactList.get(position);
 		holder.contactName.setText(contact.getName());
-		
-		
 		holder.contactPhone.setText(getPhones(contact));
+		
+		return holder;
+	}
 
+	private View createNewView() {
+		LayoutInflater inflater = context.getLayoutInflater();
+		View rowView = getRowLayout(inflater);
+		
+		ViewHolder viewHolder = getInitializedViewHolder(rowView);
+		
+		rowView.setTag(viewHolder);
+		
 		return rowView;
+	}
+
+	ViewHolder getInitializedViewHolder(View rowView) {
+		ViewHolder viewHolder = new ViewHolder();
+		viewHolder.contactName = (TextView) rowView.findViewById(R.id.name_entry);
+		viewHolder.contactPhone = (TextView) rowView.findViewById(R.id.number_entry);
+		return viewHolder;
+	}
+
+	private View getRowLayout(LayoutInflater inflater) {
+		return inflater.inflate(R.layout.list_entry, null);
 	}
 
 	private CharSequence getPhones(ContactItem contact) {
@@ -71,11 +98,11 @@ public class ContactsAdapter extends BaseAdapter {
 		builder.delete(builder.lastIndexOf(", "), builder.length());
 		return builder.toString();
 	}
-
+	
 	private StringBuilder formatPhone(String phone) {
 		StringBuilder builder = new StringBuilder(phone).reverse();
-		if (builder.length() > 7) {
-			builder.insert(7, " ");
+		if (builder.length() > Carrier.RAW_NUMBER_LENGTH) {
+			builder.insert(Carrier.RAW_NUMBER_LENGTH, " ");
 		}
 		return builder.reverse();
 	}
