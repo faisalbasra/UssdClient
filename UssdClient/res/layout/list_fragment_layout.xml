@@ -7,7 +7,12 @@
         android:id="@+id/list_contacts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:layout_alignParentTop="true"
-        android:fastScrollEnabled="true" />
+        android:fastScrollEnabled="true"
+        android:divider="@null"
+        android:cacheColorHint="@null"
+        android:listSelector="@android:color/transparent" />
 
 </RelativeLayout>

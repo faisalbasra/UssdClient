@@ -66,10 +66,9 @@ public class ContactsAdapter extends BaseAdapter {
 		holder.contactName.setText(contact.getName());
 		holder.contactPhone.setText(getPhones(contact));
 		if (contact.getPicture() != null) {
-			holder.contactPicture.setImageDrawable(contact.getPicture());
+			holder.contactPicture.setBackgroundDrawable(contact.getPicture());
 		} else {
-			holder.contactPicture.setImageDrawable(
-					context.getResources().getDrawable(android.R.drawable.gallery_thumb));
+			holder.contactPicture.setBackgroundResource(R.drawable.contact_photo_empty);
 		}
 		
 		return holder;

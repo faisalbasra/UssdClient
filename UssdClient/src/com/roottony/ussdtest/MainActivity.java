@@ -4,10 +4,10 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 
-import com.astuetz.viewpager.extensions.ScrollingTabsView;
-import com.astuetz.viewpager.extensions.TabsAdapter;
 import com.roottony.ussdtest.adapters.UssdPagerAdapter;
-import com.roottony.ussdtest.ui.ScrollingTabsAdapter;
+import com.roottony.ussdtest.ui.SwipeyTabsAdapter;
+import com.roottony.ussdtest.ui.SwipeyTabsView;
+import com.roottony.ussdtest.ui.TabsAdapter;
 
 public class MainActivity extends FragmentActivity{
 	
@@ -17,7 +17,7 @@ public class MainActivity extends FragmentActivity{
 	
 	UssdPagerAdapter mAdapter;
 	
-	private ScrollingTabsView mScrollingTabs;
+	private SwipeyTabsView mScrollingTabs;
 	private TabsAdapter mScrollingTabsAdapter;
 	
 	/** Called when the activity is first created. */
@@ -30,9 +30,9 @@ public class MainActivity extends FragmentActivity{
 		
 		mPager = initViewPager(mAdapter);
 		
-		mScrollingTabsAdapter = new ScrollingTabsAdapter(this);
+		mScrollingTabsAdapter = new SwipeyTabsAdapter(this);
 		
-		mScrollingTabs = (ScrollingTabsView) findViewById(R.id.scrolling_tabs);
+		mScrollingTabs = (SwipeyTabsView) findViewById(R.id.swipey_tabs);
 		mScrollingTabs.setAdapter(mScrollingTabsAdapter);
 		mScrollingTabs.setViewPager(mPager);
 	}
@@ -41,7 +41,7 @@ public class MainActivity extends FragmentActivity{
 		
 		ViewPager pager = (ViewPager) findViewById(R.id.pager);
 		pager.setAdapter(mAdapter);
-		pager.setCurrentItem(0);
+		pager.setCurrentItem(1);
 		pager.setPageMargin(20);
 		
 		return pager;

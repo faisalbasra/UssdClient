@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.roottony.ussdtest.ui.SwipeyTabButton 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.roottony.ussdtest"
+    
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/tab_background"
+    android:paddingBottom="8dip"
+    android:paddingLeft="16dip"
+    android:paddingRight="16dip"
+    android:paddingTop="6dip"
+    android:textColor="@drawable/tab_text_color"
+    app:textColorSelected="@android:color/black"
+    app:lineColorSelected="@android:color/black"
+    app:lineHeightSelected="5dp"
+    android:textSize="16sp"
+    android:textStyle="bold" />

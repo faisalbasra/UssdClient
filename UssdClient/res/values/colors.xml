@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="yellow">#ffff00</color>
+    <color name="yellow_velcom">#fff200</color>
+    <color name="yellow_light">#66fff200</color>
+    <color name="black_50_alpha">#88000000</color>
 </resources>
